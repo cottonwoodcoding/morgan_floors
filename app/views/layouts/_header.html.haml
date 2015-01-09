@@ -1,0 +1,39 @@
+.navbar.navbar-default{role: 'navigation'}
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle{"data-target" => "#nav-items", 'data-toggle' => 'collapse', type: 'button'}
+        %span.sr-only Toggle Navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a{href: '/'}
+        #logo.pull-left.white
+          %h5 Morgan Floors & Finishing
+        .nav-header
+        = render(partial: 'layouts/social_media_links', locals: {id: 'follow', classes: 'hidden-xs hidden-s'})
+    .collapse.navbar-collapse#nav-items.navbar-right
+      %ul.nav.navbar-nav
+        %li
+          = link_to("Home", home_path, class: 'nav-item white')
+        %li
+          = link_to("Gallery", gallery_path, class: 'nav-item white')
+        %li
+          = link_to("Resources", resource_path, class: 'nav-item white')
+        %li
+          = link_to("Testimonials", testimonial_path, class: 'nav-item white')
+        %li
+          = link_to("FB Feed (rename)", "/", class: 'nav-item white')
+        %li
+          = link_to(contact_path, class: 'nav-item white') do
+            = fa_icon "envelope"
+        %li.dropdown
+          %a.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
+            %b.fa.fa-gears.white
+          %ul.dropdown-menu
+            %li
+              - if admin_signed_in?
+                = link_to 'Logout', destroy_admin_session_path, method: :delete, class: 'delete'
+              - else
+                = link_to 'Sign In', new_admin_session_path, method: :get
+        %li
+          = render(partial: 'layouts/social_media_links', locals: {id: 'no-follow', classes: 'visible-xs visible-s'})
