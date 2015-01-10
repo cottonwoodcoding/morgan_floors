@@ -1,3 +1,13 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+  $('.edit-about').on 'click', ->
+    $(@).addClass('hidden')
+    $('.about-text').addClass('hidden')
+    $('#edit_about_area').removeClass('hidden')
+    $('.edit-about-text').val($('.about-text').attr('data-text'))
+
+  $('#cancel_edit_about').on 'click', (e) ->
+    e.preventDefault()
+    $('.edit-about-text').val('')
+    $('#edit_about_area').addClass('hidden')
+    $('.edit-about').removeClass('hidden')
+    $('.about-text').removeClass('hidden')

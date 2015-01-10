@@ -1,2 +1,13 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+.about.center
+  .about-text.white{'data-text' => @plain }
+    = raw @about
+  - if admin_signed_in?
+    .edit-about.white.pointer
+      = fa_icon 'pencil-square-o'
+    #edit_about_area.hidden
+      %form{type: 'form', action: '/update_about', method: 'post'}
+        = hidden_field_tag :authenticity_token, form_authenticity_token
+        .form-group
+          %textarea.edit-about-text{name: 'about', rows: 4, 'required' => 'required'}
+        %button#cancel_edit_about.btn.btn-inverse{type: 'button'} Cancel
+        %button.btn.btn-primary{type: 'submit'} Save

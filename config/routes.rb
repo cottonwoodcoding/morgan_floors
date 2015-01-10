@@ -8,4 +8,6 @@ MorganFloors::Application.routes.draw do
   get "/gallery", to: "gallery#index"
   get "/home", to: "home#index"
   get "/testimonial", to: "testimonial#index"
+
+  post "/update_about", to: "home#update_about"
 end
