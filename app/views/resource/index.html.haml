@@ -1,2 +1,56 @@
-%h1 Resource#index
-%p Find me in app/views/resource/index.html.haml
+.resource-wrapper
+  .video-row.col-lg-8.col-md-8.col-sm-12.col-xs-12
+    %h4.white Videos
+    %hr
+    .player
+      - if @videos.any?
+        - key = @videos.first.url.split("/").last
+      - else
+        - key = 'unknown'
+      - if admin_signed_in?
+        .add-video.white.pointer
+          = fa_icon 'plus', text: 'Add Video'
+      %iframe#video_player{src: "//www.youtube.com/embed/#{key}", 'frameborder' => '0', 'allowfullscreen' => 'true'}
+      - description = @videos.any? ? @videos.first.description : nil
+      %p.video-description.white.center
+        = description
+      .image-row.col-lg-12.col-md-12.col-sm-12.col-xs-12
+        %ul#carousel.elastislide-list
+          - if @videos.any?
+            - @videos.each do |vid|
+              - key = vid.url.split("/").last
+              %li
+                %a.vid-thumb.pointer{href: '#'}
+                  %img{src: "//i1.ytimg.com/vi/#{key}/default.jpg", 'vid-key' => key, 'vid-id' => vid.id}
+              %li.video-controls
+                - if admin_signed_in?
+                  = fa_icon 'trash', class: 'white pointer trash-vid', data: { id: vid.id }
+                  - is_main = vid.priority == 1 ? 'main-vid' : 'alternate-vid'
+                  - if is_main == 'main-vid'
+                    = fa_icon 'asterisk', class: is_main
+                  - else
+                    = fa_icon 'check', class: "#{is_main} pointer", data: { id: vid.id }
+    .vid-thumbs
+  .links-row.col-lg-4.col-md-4.col-sm-12.col-xs-12
+    %h4.white Links
+    %hr
+    - if admin_signed_in?
+      .add-link.white.pointer
+        = fa_icon 'plus', text: 'Add Link'
+    - if @links.any?
+      - @links.each do |l|
+        %a{href: l.url, target: '_blank', 'data-id' => l.id}
+          = l.url
+        .link-description.white
+          = l.description
+        - if admin_signed_in?
+          .link-control-container.pull-left{ 'data-id' => l.id }
+            - upable = l == @links.first ? 'top-link' : 'upable'
+            - downable = l == @links.last ? 'bottom-link' : 'downable'
+            = fa_icon 'arrow-up', class: "#{upable} link-conrol"
+            = fa_icon 'arrow-down', class: "#{downable} link-control"
+            = link_to delete_link_path(id: l.id), method: :delete do
+              = fa_icon 'trash', class: 'white link-control pointer'
+        %hr
+= render partial: 'add_video'
+= render partial: 'add_link'

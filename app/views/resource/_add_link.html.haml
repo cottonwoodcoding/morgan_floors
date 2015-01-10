@@ -1,0 +1,16 @@
+#add_link_modal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-body
+        %h2 Add a link
+        %form#link_form{type: 'form', action: '/add_link', method: 'post'}
+          = hidden_field_tag :authenticity_token, form_authenticity_token
+          .form-group
+            %input#link_url.form-control{name: 'url', placeholder: "http://www.cottonwoodcoding.com", type: 'text', 'required' => 'true'}
+          .form-group
+            %label{for: 'video_description'} Link Description
+            %input#link_description.form-control{name: 'description', type: 'text'}
+          .modal-footer
+            .pull-right
+              %button.btn.btn-default{type: 'button', 'data-dismiss' => 'modal'} Close
+              %button.btn.btn-primary{type: 'submit'} Submit

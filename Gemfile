@@ -15,6 +15,7 @@ gem 'picasa'
 gem 'rack-cache'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 gem 'simple_oauth', '~> 0.2.0'
+gem 'modernizr-rails'
 
 # Makes running your Rails app easier. Based on the ideas behind 12factor.net
 gem 'rails_12factor'
