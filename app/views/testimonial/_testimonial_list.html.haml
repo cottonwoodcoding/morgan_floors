@@ -1,0 +1,14 @@
+- if defined?(testimonials) && testimonials.any?
+  - testimonials.each do |t|
+    - if admin_signed_in? || t.approved == true
+      .testimonial-box
+        %p.white
+          = "\"#{t.content}\""
+        %p.white
+          = "-#{t.name}"
+        - if admin_signed_in?
+          .admin-controls.white.pointer
+            - if t.approved == false
+              = fa_icon "check", class: "review-control approve-review"
+            = fa_icon "trash", class: "review-control delete-review"
+        %hr

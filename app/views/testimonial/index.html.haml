@@ -1,2 +1,45 @@
-%h1 Testimonial#index
-%p Find me in app/views/testimonial/index.html.haml
+.testimonial-wrapper
+  .add-testimonial.white.pointer.center.hidden
+    = fa_icon 'plus', text: 'Add a testimonial'
+    %hr
+  - if @testimonials.any?
+    #testimonial_list.hidden
+    #testimonial-carousel.carousel.slide{'data-ride' => 'carousel'}
+      #testimonial_inner.carousel-inner{role: 'listbox'}
+        - @testimonials.each_with_index do |t, i|
+          - active = i == 0 ? 'active' : ''
+          .testimonial-item.item{class: active}
+            %p.white
+              = "\"#{t.content}\""
+            %p.white
+              = "-#{t.name}"
+            - if admin_signed_in?
+              .admin-controls.white.pointer
+                - if t.approved == false
+                  = fa_icon "check", class: "review-control approve-review"
+                = fa_icon "trash", class: "review-control delete-review"
+      %a.left.carousel-control{href: "#testimonial-carousel", role: 'button', 'data-slide' => 'prev'}
+        %span.glyphicon.glyphicon-chevron-left{'aria-hidden' => 'true'}
+        %span.sr-only Previous
+      %a.right.carousel-control{href: "#testimonial-carousel", role: 'button', 'data-slide' => 'next'}
+        %span.glyphicon.glyphicon-chevron-right{'aria-hidden' => 'true'}
+        %span.sr-only Next
+  .show-all.white.center.pointer
+    = fa_icon 'bars', text: 'See all'
+  .carousel-view.white.center.pointer.hidden
+    = fa_icon 'compress', text: 'Collapse'
+  .add-new-testimonial
+    %hr
+    %h5.white.center Add a testimonial
+    %form#add_testimonial_form{type: 'form', action: '/add_testimonial', method: 'post'}
+      = hidden_field_tag :authenticity_token, form_authenticity_token
+      .form-group
+        %label.white{for: 'add_testimonal'} Testimonial
+        %textarea#add_testimonal.form-control{name: 'testimonial', rows: 6, required: true}
+      .form-group
+        %label.white{for: 'add_name'} Name:
+        %input#add_name.form-control{name: 'name', type: 'text'}
+      .pull-right
+        %button.btn.btn-default{type: 'button', 'data-dismiss' => 'modal'} Close
+        %button.btn.btn-primary{type: 'submit'} Submit
+= render partial: 'add_testimonial'

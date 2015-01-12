@@ -9,6 +9,7 @@ MorganFloors::Application.routes.draw do
   get "/home", to: "home#index"
   get "/testimonial", to: "testimonial#index"
   get "/video_description", to: 'resource#video_description'
+  get "/testimonial_list_view", to: 'testimonial#testimonial_list'
 
   post "/update_about", to: "home#update_about"
   post "/add_video", to: 'resource#add_video'
@@ -16,6 +17,7 @@ MorganFloors::Application.routes.draw do
   post "/add_link", to: 'resource#add_link'
   post "/link_up", to: 'resource#link_up'
   post "/link_down", to: 'resource#link_down'
+  post "/add_testimonial", to: 'testimonial#new'
 
   delete "/delete_video", to: 'resource#delete_video'
   delete "/delete_link", to: 'resource#delete_link'

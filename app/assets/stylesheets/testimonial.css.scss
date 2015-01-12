@@ -1,3 +1,42 @@
-// Place all the styles related to the Testimonial controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#testimonial-carousel {
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#add_testimonial_form {
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#testimonial_inner {
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.show-all {
+  margin-top: 20px;
+}
+
+.testimonial-wrapper {
+  margin-top: 10%;
+}
+
+.testimonial-item {
+  text-align: center;
+  font-size: 16px;
+}
+
+.review-control {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.testimonial-box {
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
