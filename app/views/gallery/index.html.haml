@@ -1,2 +1,34 @@
-%h1 Gallery#index
-%p Find me in app/views/gallery/index.html.haml
+#gallery_accordion.panel-group{role: 'tablist', 'aria-multiselectable' => false}
+  - @album_hash.each_with_index do |album, i|
+    .panel.panel-default.gallery-accordion
+      - album_id = album.first
+      - value = album.last
+      .panel-heading.gallery-panel.pointer{role: 'tab', id: "heading_#{album_id}"}
+        %h4.panel-title.gallery-title.center
+          %a{href: "#collapse_#{album_id}", 'data-toggle' => 'collapse', 'data-parent' => '#gallery_accordion', 'aria-extended' => true, 'aria-controlls' => "collapse_#{album_id}"}
+            = value[:name]
+      - open = i == 0 ? 'in' : 'closed'
+      - images = {}
+      .panel-collapse.collapse{role: 'tabpanel', 'aria-labelledby' => "heading_#{album_id}", id: "collapse_#{album_id}", class: open}
+        .panel-body
+          .carousel.slide.gallery-carousel{'data-ride' => 'carousel', id: "carousel-#{album_id}", 'data-interval' => 'false'}
+            .carousel-inner{role: 'listbox'}
+              - value[:images].each_with_index do |image, i|
+                - active = i == 0 ? 'active' : ''
+                - images[i] = image[:thumb]
+                .item{class: active}
+                  %img.gallery-image{src: "http://#{image[:src]}"}
+                  .carousel-caption
+                    %p.white
+                      = image[:description]
+            %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-#{album_id}", :role => "button"}
+              %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
+              %span.sr-only Previous
+            %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-#{album_id}", :role => "button"}
+              %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
+              %span.sr-only Next
+        %ul.thumbnails.elastislide-list{id: "album_thumbs_#{album_id}"}
+          - images.each do |key, img|
+            %li{'data-target' => "#carousel-#{album_id}", 'data-slide-to' => key}
+              %a.img-thumb.pointer{href: '#', 'data-id' => key}
+                %img.thumb{src: "//#{img}"}
