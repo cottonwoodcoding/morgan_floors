@@ -25,3 +25,5 @@ $ ->
     $(@).addClass('hidden')
     $('.show-all').removeClass('hidden')
 
+  $('#add_testimonial').on 'focus', ->
+    $('#testimonial-carousel').carousel('pause')

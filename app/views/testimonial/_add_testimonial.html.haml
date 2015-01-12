@@ -7,7 +7,7 @@
           = hidden_field_tag :authenticity_token, form_authenticity_token
           .form-group
             %label{for: 'testimonal'} Testimonial
-            %textarea#testimonal.form-control{name: 'testimonial', rows: 5, required: true}
+            %textarea#testimonal.form-control{name: 'testimonial', rows: 5, required: true, 'maxlength' => '255'}
           .form-group
             %label{for: 'name'} Name:
             %input#name.form-control{name: 'name', type: 'text'}

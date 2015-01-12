@@ -18,7 +18,9 @@ MorganFloors::Application.routes.draw do
   post "/link_up", to: 'resource#link_up'
   post "/link_down", to: 'resource#link_down'
   post "/add_testimonial", to: 'testimonial#new'
+  post "/approve_comment", to: 'testimonial#approve'
 
   delete "/delete_video", to: 'resource#delete_video'
   delete "/delete_link", to: 'resource#delete_link'
+  delete "/delete_comment", to: 'testimonial#delete'
 end
