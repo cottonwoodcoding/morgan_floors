@@ -1,0 +1,12 @@
+%br
+%i.fa.fa-phone
+%strong Phone Numbers:
+%br
+Primary Number:
+= number_to_phone(@primary_number.number, country_code: 1)
+- if @other_numbers.count > 0
+  - @other_numbers.each do |number|
+    %br
+    Number:
+    = number_to_phone(number.number, country_code: 1)
+%br

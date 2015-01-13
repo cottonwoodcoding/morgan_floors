@@ -1,0 +1,9 @@
+- number = '' unless number
+- name_value = Random.new.rand(10..100) unless name_value
+.form-group.other_phone
+  %label.col-sm-2.control-label{:for => "other_phone"} Other Phone
+  .col-sm-10
+    .input-group
+      %input.form-control{:placeholder => "Other Phone", :type => "phone", required: true, name: "other_phone[#{name_value}]", value: number}
+      %span.input-group-addon.remove_phone
+        %i.fa.fa-minus.pointer

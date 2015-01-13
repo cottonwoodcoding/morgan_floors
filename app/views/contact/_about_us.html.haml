@@ -1,0 +1,13 @@
+.col-sm-4.col-lg-4
+  .panel.no-background
+    .panel-heading
+      %h3
+        %i.icon-pushpin.main-color
+        .font-m About Us
+    .panel-body
+      %address
+        %div.contact_name
+          %strong.underline Morgan Floors
+          %br
+          = render(partial: 'addresses') if addresses
+          = render(partial: 'phones') if phones

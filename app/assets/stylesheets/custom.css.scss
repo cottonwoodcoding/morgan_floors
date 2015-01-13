@@ -15,10 +15,12 @@
   }
 }
 
-body {
-  background: url('/assets/app-background.jpg');
-  background-repeat: no-repeat;
-  background-size: 100%
+html body {
+  background: url('/assets/app-background.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .navbar {
@@ -45,4 +47,12 @@ body {
 .scrollable {
   max-height: 500px;
   overflow-y: scroll;
+}
+
+.no-background {
+  background-color: transparent !important;
+}
+
+.underline {
+  text-decoration: underline;
 }

@@ -14,4 +14,6 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require modernizr
+//= require underscore
+//= require gmaps/google
 //= require_tree .

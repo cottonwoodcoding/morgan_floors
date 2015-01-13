@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150113011322) do
+ActiveRecord::Schema.define(version: 20150113013807) do
+
+  create_table "addresses", force: true do |t|
+    t.string   "civic_address"
+    t.string   "municipality"
+    t.string   "postal_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -47,6 +55,13 @@ ActiveRecord::Schema.define(version: 20150113011322) do
     t.text     "question"
     t.text     "answer"
     t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "phone_numbers", force: true do |t|
+    t.string   "number"
+    t.boolean  "primary",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

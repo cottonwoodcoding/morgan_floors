@@ -1,0 +1,30 @@
+.container.white
+  %h3.text-center.underline Admin Business Info
+  %hr
+  %form.form-horizontal{method: 'POST', action: '/update_business_info'}
+    = hidden_field_tag :authenticity_token, form_authenticity_token
+    .form-group#primary_phone
+      %label.col-sm-2.control-label{:for => "primary_phone"} Primary Phone
+      .col-sm-10
+        .input-group
+          %input#primary_phone.form-control{:placeholder => "Primary Phone", :type => "phone", name: 'primary_phone', value: number_to_phone(model_info(@primary_number, :number))}
+          %span.input-group-addon.add_phone
+            %i.fa.fa-plus.pointer
+    - if @other_numbers.count > 0
+      - @other_numbers.each_with_index do |number, index|
+        = render(partial: 'other_phone', locals: {number: number_to_phone(number.number), name_value: index})
+    .form-group
+      %label.col-sm-2.control-label{:for => "civic_address"} Civic Address
+      .col-sm-10
+        %input#civic_address.form-control{:placeholder => "Civic Address", :type => "address", name: 'address[civic_address]', value: model_info(@address, :civic_address)}
+    .form-group
+      %label.col-sm-2.control-label{:for => "municipality"} Municipality
+      .col-sm-10
+        %input#municipality.form-control{:placeholder => "Municipality", :type => "text", name: 'address[municipality]', value: model_info(@address, :municipality)}
+    .form-group
+      %label.col-sm-2.control-label{:for => "postal_code"} Postal Code
+      .col-sm-10
+        %input#postal_code.form-control{:placeholder => "Postal Code", :type => "text", name: 'address[postal_code]', value: model_info(@address, :postal_code)}
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        %button.btn.btn-default.pull-right{:type => "submit"} Save Changes

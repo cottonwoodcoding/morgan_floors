@@ -18,6 +18,8 @@ gem 'simple_oauth', '~> 0.2.0'
 gem 'modernizr-rails'
 gem 'curb'
 gem 'feedjira'
+gem 'sendgrid'
+gem 'gmaps4rails'
 
 # Makes running your Rails app easier. Based on the ideas behind 12factor.net
 gem 'rails_12factor'
