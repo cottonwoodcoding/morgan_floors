@@ -1,4 +1,4 @@
-.about.center
+.about.center.col-lg-8.col-md-8.col-xs-12.col-sm-12
   .about-text.white{'data-text' => @plain }
     = raw @about
   - if admin_signed_in?
@@ -11,3 +11,13 @@
           %textarea.edit-about-text{name: 'about', rows: 4, 'required' => 'required'}
         %button#cancel_edit_about.btn.btn-inverse{type: 'button'} Cancel
         %button.btn.btn-primary{type: 'submit'} Save
+.feed.col-lg-4.col-md-4.col-xs-12.col-sm-12.scrollable
+  %h4.white Latest Feed
+  %hr
+  - if @entries.any?
+    - @entries.each do |e|
+      %h5.white
+        = e[:title]
+      .content-section.white
+        = e[:content]
+      %hr

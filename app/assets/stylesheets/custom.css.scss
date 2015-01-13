@@ -1,3 +1,20 @@
+@media (max-width: 1091px) {
+  .scrollable {
+    max-height: 100%;
+    overflow-y: visible;
+  }
+}
+
+@media (max-width: 402px) {
+  .content-section {
+    margin-left: 0px;
+
+    iframe {
+      width: 100%;
+    }
+  }
+}
+
 body {
   background: url('/assets/app-background.jpg');
   background-repeat: no-repeat;
@@ -23,4 +40,9 @@ body {
 
 .gray {
   color: gray;
+}
+
+.scrollable {
+  max-height: 500px;
+  overflow-y: scroll;
 }
