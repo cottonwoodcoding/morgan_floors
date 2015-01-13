@@ -20,6 +20,7 @@ gem 'curb'
 gem 'feedjira'
 gem 'sendgrid'
 gem 'gmaps4rails'
+gem 'geocoder'
 
 # Makes running your Rails app easier. Based on the ideas behind 12factor.net
 gem 'rails_12factor'

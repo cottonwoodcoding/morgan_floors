@@ -72,6 +72,7 @@ GEM
       sax-machine (~> 1.0)
     font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
+    geocoder (1.2.6)
     gmaps4rails (2.1.2)
     haml (4.1.0.beta.1)
       tilt
@@ -239,6 +240,7 @@ DEPENDENCIES
   devise
   feedjira
   font-awesome-rails
+  geocoder
   gmaps4rails
   haml-rails
   heroku-deflater

@@ -43,6 +43,10 @@ class BusinessInfoController < ApplicationController
     render(partial: 'other_phone')
   end
 
+  def address
+    render(json: @address.to_json)
+  end
+
   private
 
   def business_info

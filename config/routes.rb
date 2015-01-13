@@ -12,6 +12,8 @@ MorganFloors::Application.routes.draw do
   get "/faq", to: 'faq#index'
   get '/business_info', to: 'business_info#index'
   get '/other_phone', to: 'business_info#other_phone'
+  get '/cords', to: 'application#cords'
+  get '/address', to: 'business_info#address'
 
   post "/update_about", to: "home#update_about"
   post "/add_video", to: 'resource#add_video'

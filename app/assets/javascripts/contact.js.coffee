@@ -1,13 +1,22 @@
 $ ->
   if $('#map').is(':visible')
+     cords = []
+     $.ajax '/address',
+       type: 'GET'
+       success: (data) ->
+        $.ajax '/cords',
+          type: 'GET'
+          data: {'address' : data}
+          success: (data) ->
+            cords = data
      handler = Gmaps.build("Google")
      handler.buildMap
        internal:
          id: "map"
      , ->
        marker = handler.addMarker({
-         lat: 40.736356
-         lng: -111.888581
+         lat: cords[0]
+         lng: cords[1]
        })
        handler.map.centerOn(marker)
 
