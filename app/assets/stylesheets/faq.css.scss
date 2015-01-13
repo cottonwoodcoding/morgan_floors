@@ -1,0 +1,22 @@
+.faq-panel-group, .faq-panel-heading, .faq-panel {
+  background: transparent !important;
+  border: none !important;
+}
+
+.faq-panel-body {
+  background: rgba(255, 255, 255, 0.3) !important;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.question-wrapper {
+  margin-top: 20px;
+}
+
+.faq-controls {
+  margin-right: 5%;
+  i {
+    margin-left: 5px;
+  }
+}

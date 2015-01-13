@@ -1,0 +1,27 @@
+#add_question_modal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-body
+        %h2 Add a question
+        %form#testimonial_form{type: 'form', action: '/add_question', method: 'post'}
+          = hidden_field_tag :authenticity_token, form_authenticity_token
+          .form-group
+            %label{for: 'question'} Question
+            %input#question.form-control{name: 'question', required: true, 'maxlength' => '255'}
+          .form-group
+            %label{for: 'answer'} Answer
+            %input#answer.form-control{name: 'answer', required: true, 'maxlength' => '255'}
+          .form-group
+            %label{for: 'position'} Position
+            %select#position.form-control{name: 'position', type: 'text'}
+              - if questions.any?
+                - questions.each do |q|
+                  %option
+                    = q.position
+                %option Last
+              - else
+                %option 1
+          .modal-footer
+            .pull-right
+              %button.btn.btn-default{type: 'button', 'data-dismiss' => 'modal'} Close
+              %button.btn.btn-primary{type: 'submit'} Submit

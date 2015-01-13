@@ -1,0 +1,35 @@
+- if admin_signed_in?
+  .add-question.center.pointer.white
+    = fa_icon 'plus', text: 'Add Question'
+.question-wrapper
+  %h3.white.center Frequently Asked Questions
+  %hr
+  #faq_accordion.panel-group.faq-panel-group{role: 'tablist', 'aria-multiselectable' => 'false'}
+    - @questions.each_with_index do |q, i|
+      - active = i == 0 ? 'in' : ''
+      .panel.panel-default.pointer.faq-panel
+        .panel-heading.faq-panel-heading{id: "heading_#{q.position}", role: 'tab'}
+          %h4.white.center.panel-title
+            %a{'data-toggle' => 'collapse', 'data-parent' => "#accordion_#{q.position}", href: "#collapse_#{q.position}", 'aria-extended' => !active.blank?, 'aria-controlls' => "collapse_#{q.position}"}
+              = q.question
+            - arrow = active.blank? ? 'right' : 'down'
+            = fa_icon "caret-#{arrow}", class: 'toggle-arrow'
+          - if admin_signed_in?
+            .faq-controls.white.pull-right.hover{'data-question-id' => q.id}
+              - if active == 'in'
+                = fa_icon 'arrow-up', class: 'gray'
+              - else
+                = link_to question_up_path(id: q.id), method: :post do
+                  = fa_icon 'arrow-up'
+              - if i == @questions.count - 1
+                = fa_icon 'arrow-down', class: 'gray'
+              - else
+                = link_to question_down_path(id: q.id), method: :post do
+                  = fa_icon 'arrow-down', class: 'question-up'
+              = link_to delete_question_path(id: q.id), method: :delete do
+                = fa_icon 'trash'
+        .panel-collapse.collapse.faq-collapse{class: active, id: "collapse_#{q.position}", role: 'tabpanel', 'aria-labeled-by' => "heading_#{q.position}"}
+          .panel-body.faq-panel-body.center.white
+            = q.answer
+
+= render partial: 'add_question', locals: { questions: @questions }
