@@ -10,10 +10,10 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require modernizr
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
-//= require modernizr
 //= require underscore
 //= require gmaps/google
 //= require_tree .
