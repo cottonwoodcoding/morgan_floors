@@ -7,28 +7,29 @@
         %span.icon-bar
         %span.icon-bar
       %a{href: '/'}
-        #logo.pull-left.white
-          %h5 Morgan Floors & Finishing
+        #logo.pull-left
+          %img{src: image_path('HarMorg-Flooring-Div_logo.png')}
         .nav-header
-        = render(partial: 'layouts/social_media_links', locals: {id: 'follow', classes: 'hidden-xs hidden-s'})
+    .ss-links
+      = render(partial: 'layouts/social_media_links', locals: {id: 'follow', classes: 'hidden-xs hidden-sm'})
     .collapse.navbar-collapse#nav-items.navbar-right
       %ul.nav.navbar-nav
         %li
-          = link_to("Home", home_path, class: 'nav-item white')
+          = link_to("Home", home_path, class: 'nav-item')
         %li
-          = link_to("Gallery", gallery_path, class: 'nav-item white')
+          = link_to("Gallery", gallery_path, class: 'nav-item')
         %li
-          = link_to("Resources", resource_path, class: 'nav-item white')
+          = link_to("Resources", resource_path, class: 'nav-item')
         %li
-          = link_to("Testimonials", testimonial_path, class: 'nav-item white')
+          = link_to("Testimonials", testimonial_path, class: 'nav-item')
         %li
-          = link_to("FAQ", faq_path, class: 'nav-item white')
+          = link_to("FAQ", faq_path, class: 'nav-item')
         %li
-          = link_to(contact_path, class: 'nav-item white') do
+          = link_to(contact_path, class: 'nav-item') do
             = fa_icon "envelope"
         %li.dropdown
           %a.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
-            %b.fa.fa-gears.white
+            %b.fa.fa-gears
           %ul.dropdown-menu
             %li
               - if admin_signed_in?

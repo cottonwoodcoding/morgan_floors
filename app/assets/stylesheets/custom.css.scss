@@ -56,3 +56,46 @@ html body {
 .underline {
   text-decoration: underline;
 }
+
+#logo {
+  img {
+    width: 150px;
+  }
+}
+
+.nav-item {
+  color: black !important;
+  text-decoration: none !important;
+  cursor: pointer;
+  letter-spacing: 6px;
+  font-weight: bold;
+}
+
+.ss-links {
+  margin-left: 15%;
+  position: absolute;
+  top: 40px;
+  font-size: 20px;
+  a {
+    text-decoration: none !important;
+    cursor: pointer;
+    margin-left: 10px;
+
+  }
+}
+
+.facebook {
+  color: #3a5795 !important;
+}
+
+.youtube {
+  color: #cc181e !important;
+}
+
+.twitter {
+  color: #2FC2EF !important;
+}
+
+.linkedin {
+  color: #069 !important;
+}
