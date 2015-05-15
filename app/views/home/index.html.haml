@@ -1,19 +1,43 @@
 .main-img
   / TODO add image src here
-.about.center.col-lg-7.col-md-7.col-xs-12.col-sm-12
-  .about-text.white{'data-text' => @plain }
-    = raw @about
-  - if admin_signed_in?
-    .edit-about.white.pointer
-      = fa_icon 'pencil-square-o'
-    #edit_about_area.hidden
-      %form{type: 'form', action: '/update_about', method: 'post'}
-        = hidden_field_tag :authenticity_token, form_authenticity_token
-        .form-group
-          %textarea.edit-about-text{name: 'about', rows: 4, 'required' => 'required'}
-        %button#cancel_edit_about.btn.btn-inverse{type: 'button'} Cancel
-        %button.btn.btn-primary{type: 'submit'} Save
-.feed.col-lg-4.col-md-4.col-xs-12.col-sm-12
+.about.col-md-7.col-xs-12
+  .big-logo.center
+    %img{src: image_path('harmorg-flooring-div_logo-inverted.png')}
+  %a.no-style.center{href: 'tel:15035555555'}
+    %h4.white.text-center.bottom-60 1 (503) 555-5555
+  %h1.trans-white.center.text-shadow.white About Us
+  %hr.no-margin
+  .about-section.col-xs-12
+    .hidden-xs.col-md-2.trans-white.top-10
+      .white.text-center.pointer.no-style
+        .col-xs-12
+          = link_to gallery_path do
+            = fa_icon 'camera-retro 4x', class: 'white text-shadow-5-5'
+        .col-xs-12.bottom-30
+          = link_to resource_path do
+            = fa_icon 'learn-pub 4x', class: 'white text-shadow-5-5'
+        .col-xs-12.bottom-30
+          = link_to testimonial_path do
+            = fa_icon 'comment 4x', class: 'white text-shadow-5-5'
+        .col-xs-12.bottom-30
+          = link_to faq_path do
+            = fa_icon 'question 4x', class: 'white text-shadow-5-5'
+        .col-xs-12
+          = link_to contact_path do
+            = fa_icon 'envelope 4x', class: 'white text-shadow-5-5'
+    .about-text.col-xs-12.col-md-10.white{'data-text' => @plain }
+      = raw @about
+    - if admin_signed_in?
+      .edit-about.white.pointer.text-center
+        = fa_icon 'pencil-square-o'
+      #edit_about_area.hidden
+        %form{type: 'form', action: '/update_about', method: 'post'}
+          = hidden_field_tag :authenticity_token, form_authenticity_token
+          .form-group
+            %textarea.edit-about-text{name: 'about', rows: 4, 'required' => 'required'}
+          %button#cancel_edit_about.btn.btn-inverse{type: 'button'} Cancel
+          %button.btn.btn-primary{type: 'submit'} Save
+.feed.col-md-5.col-xs-12
   %h4.white Latest Feed
   %hr
   .feed.scrollable
