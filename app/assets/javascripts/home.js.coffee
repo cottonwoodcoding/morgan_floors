@@ -11,3 +11,9 @@ $ ->
     $('#edit_about_area').addClass('hidden')
     $('.edit-about').removeClass('hidden')
     $('.about-text').removeClass('hidden')
+
+  if $('.alert').is(':visible')
+    window.setTimeout (->
+      $('.alert').fadeTo(500,0).slideUp 500, ->
+        $(@).remove()
+    ), 3000
