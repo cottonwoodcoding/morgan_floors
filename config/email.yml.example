@@ -1,2 +1,4 @@
 sendgrid_username: 'username'
 sendgrid_password: 'password'
+mail_from: ''
+mail_to: ''

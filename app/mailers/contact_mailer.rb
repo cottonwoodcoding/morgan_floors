@@ -1,13 +1,12 @@
 class ContactMailer < ActionMailer::Base
   include SendGrid
 
-  default from: "jason@jasonrhall.com"
+  default from: ENV['mail_from']
 
   def send_feedback(email, name, content)
-    emails = ['jakesorce@gmail.com']
     @email = email
     @name = name
     @content = content
-    mail(:to => emails, :subject => "#{name} is trying to contact you via the Jason R Hall Website.")
+    mail(:to => ENV['mail_to'], :subject => "#{name} is trying to contact you via your website.")
   end
 end
