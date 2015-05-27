@@ -36,7 +36,7 @@ class BusinessInfoController < ApplicationController
     end
 
     flash[:success] = "Business Info Updated Successfully!"
-    redirect_to action: :index
+    redirect_to contact_path
   end
 
   def other_phone

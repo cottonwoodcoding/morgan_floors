@@ -1,0 +1,13 @@
+%h3.text-center.white Forgot your password?
+= simple_form_for(resource, as: resource_name, url: admin_password_path(resource_name), html: { method: :post, class: 'form-horizontal'}) do |f|
+  = f.error_notification
+  .from-group
+    = f.label :email, class: 'white col-sm-2 control-label'
+    .col-sm-9
+      = f.email_field :email, required: true, autofocus: true, class: 'form-control'
+  %br
+  %br
+  .text-center
+    = f.submit "Send me reset password instructions", class: 'btn btn-sm btn-default'
+    %hr
+    = render "devise/shared/links"

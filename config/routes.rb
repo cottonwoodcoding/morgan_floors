@@ -27,6 +27,7 @@ MorganFloors::Application.routes.draw do
   post "/question_up", to: 'faq#up'
   post "/question_down", to: 'faq#down'
   post '/update_business_info', to: 'business_info#update'
+  post '/send_feedback', to: 'contact#send_feedback'
 
   delete "/delete_video", to: 'resource#delete_video'
   delete "/delete_link", to: 'resource#delete_link'
