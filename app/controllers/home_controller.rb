@@ -12,7 +12,7 @@ class HomeController < ApplicationController
       end
       @plain = str_lines.join("\n")
     end
-    feed = Feedjira::Feed.fetch_and_parse("http://davematthews.tumblr.com/rss")
+    feed = Feedjira::Feed.fetch_and_parse("http://harmorg.tumblr.com/rss")
     @entries = []
     feed.entries.each do |e|
       @entries << {title: e.title, content: e.summary.html_safe}
