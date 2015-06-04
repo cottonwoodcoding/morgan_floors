@@ -3,11 +3,12 @@
     .panel-heading
       %h3
         %i.icon-pushpin.main-color
-        .font-m About Us
+        .font-m Information
     .panel-body
       %address
         %div.contact_name
-          %strong.underline Morgan Floors
+          .big-logo
+            %img{src: image_path('harmorg-flooring-div_logo-inverted.png')}
           %br
           = render(partial: 'addresses') if addresses
           = render(partial: 'phones') if phones

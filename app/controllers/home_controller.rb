@@ -3,6 +3,8 @@ class HomeController < ApplicationController
   include ActionView::Helpers::SanitizeHelper
 
   def index
+    @phone = PhoneNumber.where(primary: true).first.number rescue nil
+    @phone_click = @phone.gsub(/\D/, '') rescue nil
     content = AppDetail.first
     @about = content ? content.about : nil
     if @about

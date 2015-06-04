@@ -3,8 +3,9 @@
 .about.col-md-7.col-xs-12
   .big-logo.center
     %img{src: image_path('harmorg-flooring-div_logo-inverted.png')}
-  %a.no-style.center{href: 'tel:15035555555'}
-    %h4.white.text-center.bottom-60 1 (503) 555-5555
+  %a.no-style.center{href: "tel:#{@phone_click}"}
+    %h4.white.text-center.bottom-60
+      = @phone
   %h1.trans-white.center.text-shadow.white About Us
   %hr.no-margin
   .about-section.col-xs-12
